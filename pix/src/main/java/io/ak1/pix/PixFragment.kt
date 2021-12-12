@@ -160,6 +160,7 @@ class PixFragment(private val resultCallback: ((PixEventCallback.Results) -> Uni
         observeSelectionList()
         retrieveMedia()
         setBottomSheetBehavior()
+        updateGalleryView()
         setupControls()
         backPressController()
 
@@ -425,4 +426,17 @@ class PixFragment(private val resultCallback: ((PixEventCallback.Results) -> Uni
         }
         return false
     }
+
+    private fun updateGalleryView() {
+        if (options.onlyCamera) {
+            binding.gridLayout.initialRecyclerviewContainer.hide()
+            binding.gridLayout.controlsLayout.messageBottom.hide()
+            binding.gridLayout.bottomSheet.hide()
+        }else{
+            binding.gridLayout.initialRecyclerviewContainer.show()
+            binding.gridLayout.controlsLayout.messageBottom.show()
+            binding.gridLayout.bottomSheet.show()
+        }
+    }
+
 }
